@@ -7,5 +7,13 @@ print "character 1 was %s" % answer2[1]
 print "last character was %s" % answer2[-1]
 print "characters from 1 - 3 was %s" % answer2[1:3]
 
-answer3 = raw_input("Enter a number:")
+answer3 = int(raw_input("Enter a number:"))
 print "number was %d" % answer3
+
+# >>> s[:1]
+# 's'
+# >>> s[1:]
+# 'tring'
+# >>> s
+# 'string'
+# >>> 
