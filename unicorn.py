@@ -35,11 +35,15 @@ while True:
         s = 0.1
         v = 0.1
 
+    print h
+    print s
+    print v
+
     rgb = colorsys.hsv_to_rgb(h, s, v)
     r = int(rgb[0]*255.0)
     g = int(rgb[1]*255.0)
     b = int(rgb[2]*255.0)
 
-    unicorn.set_pixel(4, 4, r, g, b)
+    unicorn.set_pixel(3, 3, r, g, b)
     unicorn.show()
     time.sleep(0.05)
