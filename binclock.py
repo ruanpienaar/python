@@ -193,3 +193,4 @@ while True:
     matrix = time_as_matrix()
     matrix_to_hat(matrix)
     unicorn.show()
+    time.sleep(1.0)
