@@ -70,6 +70,7 @@ while True:
 
     prev_position = position
 
+    print position[0], position[1]
     unicorn.set_pixel(position[0], position[1], r_on, g_on, b_on)
     unicorn.show()
     time.sleep(0.5)
