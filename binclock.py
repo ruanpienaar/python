@@ -22,26 +22,25 @@ def time_as_matrix():
     binary = [decimal_to_binary(n).rjust(4, '0') for n in decimal]
     return tuple(tuple(map(int, ns)) for ns in zip(*binary))
 
-"""
-matrix = (
-            (0, 1, 0, 1, 0, 1),
-            (0, 1, 1, 1, 1, 1),
-            (1, 1, 1, 1, 1, 1),
-            (1, 1, 1, 1, 1, 1),
-            )
-"""
+#"""
+#matrix = (
+#            (0, 1, 0, 1, 0, 1),
+#            (0, 1, 1, 1, 1, 1),
+#            (1, 1, 1, 1, 1, 1),
+#            (1, 1, 1, 1, 1, 1),
+#            )
+#"""
 def matrix_to_hat(matrix):
-
     rgb_on  = colorsys.hsv_to_rgb(0.5, 0.5, 0.5)
     rgb_off = colorsys.hsv_to_rgb(0.5, 0.5, 0.1)
 
-    r_on  = int(rgb[0]*255.0)
-    g_on  = int(rgb[1]*255.0)
-    b_on  = int(rgb[2]*255.0)
+    r_on  = int(rgb_on[0]*255.0)
+    g_on  = int(rgb_on[1]*255.0)
+    b_on  = int(rgb_on[2]*255.0)
 
-    r_off = int(rgb[0]*255.0)
-    g_off = int(rgb[1]*255.0)
-    b_off = int(rgb[2]*255.0)
+    r_off = int(rgb_off[0]*255.0)
+    g_off = int(rgb_off[1]*255.0)
+    b_off = int(rgb_off[2]*255.0)
 
     # _,_ 0,6 _,_ 0,4 _,_ 0,2 _,_ _,_
     # _,_ 1,6 1,5 1,4 1,3 1,2 _,_ _,_

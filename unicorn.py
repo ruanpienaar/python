@@ -4,46 +4,51 @@ import unicornhat as unicorn
 import time, colorsys
 import numpy as np
 
-unicorn.brightness(0.5)
+unicorn.brightness(0.45)
+#bright = 0.01
 
-# while True:
-#     rand_mat = np.random.rand(8,8)
-#     for y in range(8):
-#         for x in range(8):
-#             h = 0.1 * rand_mat[x, y]
-#             s = 0.8
-#             v = rand_mat[x, y]
-#             rgb = colorsys.hsv_to_rgb(h, s, v)
-#             r = int(rgb[0]*255.0)
-#             g = int(rgb[1]*255.0)
-#             b = int(rgb[2]*255.0)
-#             unicorn.set_pixel(x, y, r, g, b)
-#     unicorn.show()
-#     time.sleep(0.01)
+h = 0.05
+s = 0.05
+v = 0.2
 
-h = 0.1
-s = 0.1
-v = 0.1
+row=0
+col=-1
 
 while True:
 
-    h += 0.1
-    s += 0.1
-    v += 0.1
-    if h == 1:
-        h = 0.1
-        s = 0.1
-        v = 0.1
+#    bright += 0.01
+#    if abs(bright) > 1.0:
+#	bright = 0.01
+#    unicorn.brightness(bright)  
 
-    print h
-    print s
-    print v
+    #h += 0.01
+    #s += 0.01
+    #v += 0.01
+
+    col += 1
+    if abs(col) > 7:
+	h += 0.01
+	s += 0.01
+	row += 1
+	if abs(row) > 7:
+	  v += 0.01
+	  row = 0
+	col = 0
+
+    if abs(h) > 1:
+        h = 0.1
+    elif abs(s) > 1:
+        s = 0.1
+    elif abs(v) > 1:
+	v = 0.2
+
+    print row, col
 
     rgb = colorsys.hsv_to_rgb(h, s, v)
     r = int(rgb[0]*255.0)
     g = int(rgb[1]*255.0)
     b = int(rgb[2]*255.0)
 
-    unicorn.set_pixel(3, 3, r, g, b)
+    unicorn.set_pixel(row, col, r, g, b)
     unicorn.show()
-    time.sleep(0.05)
+    time.sleep(0.0001)
