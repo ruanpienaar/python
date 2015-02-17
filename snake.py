@@ -31,25 +31,23 @@ while True:
     elif position[0] == 0:
         going_forward = True
 
-    if position[1] >= 7:
+    if position[1] > 7:
         if going_forward:
             position = (position[0]+1, position[1])
         else:
             position = (position[0]-1, position[1])
         right_to_left = False
-    elif position[1] == 0:
+    elif position[1] < 0:
         if going_forward:
             position = (position[0]+1, position[1])
         else:
             position = (position[0]-1, position[1])
         right_to_left = True
+
+    if right_to_left:
+        position = (position[0], position[1]+1)
     else:
-        if right_to_left:
-            position = (position[0], position[1]+1)
-        else:
-            position = (position[0], position[1]-1)
-
-
+        position = (position[0], position[1]-1)
 
     prev_position = position
     unicorn.set_pixel(position[0], position[1], r_on, g_on, b_on)
