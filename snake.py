@@ -7,7 +7,7 @@ position = (0, 0)
 prev_position = (0, 0)
 full_size = False
 going_forward = True
-left_to_right = True
+right_to_left = True
 
 while True:
 
@@ -26,13 +26,17 @@ while True:
     #unicorn.set_pixel(prev_position[0], prev_position[1], r_off, g_off, b_off)
 
     if position[1] > 7:
-        left_to_right = False
+        print ">7"
+        right_to_left = False
     elif position[1] == 0:
-        left_to_right = True
+        print "==0"
+        right_to_left = True
 
-    if left_to_right:
+    if right_to_left:
+        print "right to left"
         position = (position[0], position[1]+1)
     else:
+        print "left to right"
         position = (position[0], position[1]-1)
 
 
@@ -42,10 +46,10 @@ while True:
         #     position = (position[0]-1, position[1])
 
         # # Turn around
-        # if left_to_right:
-        #     left_to_right = False
+        # if right_to_left:
+        #     right_to_left = False
         # else:
-        #     left_to_right = True
+        #     right_to_left = True
     prev_position = position
     unicorn.set_pixel(position[0], position[1], r_on, g_on, b_on)
     unicorn.show()
