@@ -36,10 +36,10 @@ while True:
 
     if hor_pos == 7:
         go_down = False
-        position = (position[0]+1, position[1])
+        position = (position[0]-1, position[1])
     elif hor_pos == 0:
         go_down = True
-        position = (position[0]-1, position[1])
+        position = (position[0]+1, position[1])
     else:
         if go_left:
             position = (position[0], position[1]+1)
