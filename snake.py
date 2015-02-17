@@ -6,7 +6,7 @@ import time, colorsys
 position = (0, 0)
 prev_position = (0, 0)
 full_size = False
-vertical = True
+go_down = True
 go_left = True
 
 unicorn.brightness(0.75)
@@ -32,21 +32,23 @@ while True:
 
     if ver_pos == 7:
         go_left = False
-        position = (position[0], position[1]-1)
+        #position = (position[0], position[1]-1)
+        if go_down:
+            position = (position[0]+1, position[1])
+        else:
+            position = (position[0]-1, position[1])
     elif ver_pos == 0:
         go_left = True
+        if go_down:
+            position = (position[0]+1, position[1])
+        else:
+            position = (position[0]-1, position[1])
         position = (position[0], position[1]+1)
     else:
         if go_left:
             position = (position[0], position[1]+1)
         else:
             position = (position[0], position[1]-1)
-
-
-    # if hor_pos == 7:
-    #     position = (position[0], position[1]-1)
-    # elif hor_pos == 0:
-    #     position = (position[0], position[1]+1)
 
 
     prev_position = position
