@@ -3,31 +3,6 @@
 import unicornhat as unicorn
 import time, colorsys
 
-# 0,0
-
-# 0,0 0,1
-
-# 0,0 0,1 0,2
-
-# 0,0 0,1 0,2 0,3
-
-# 0,0 0,1 0,2 0,3 0,4
-
-# 0,0 0,1 0,2 0,3 0,4 0,5
-
-# 0,1 0,2 0,3 0,4 0,5 0,6
-
-# 0,2 0,3 0,4 0,5 0,6 0,7
-
-# 0,3 0,4 0,5 0,6 0,7 1,7
-
-# 0,4 0,5 0,6 0,7 1,7 1,6
-
-# 0,5 0,6 0,7 1,7 1,6 1,5
-
-# 0,6 0,7 1,7 1,6 1,5 1,4
-
-
 position = (0, 0)
 full_size = False
 going_forward = True
@@ -49,7 +24,7 @@ while True:
     # Switch off previous light
     unicorn.set_pixel(position[0], position[1], r_off, g_off, b_off)
 
-    if position[1] > 8:
+    if position[1] > 7:
         left_to_right = False
     elif position[1] == 0:
         left_to_right = True
