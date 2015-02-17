@@ -23,7 +23,7 @@ while True:
     b_off = int(rgb_off[2]*255.0)
 
     # Switch off previous light
-    unicorn.set_pixel(prev_position[0], prev_position[1], r_off, g_off, b_off)
+    #unicorn.set_pixel(prev_position[0], prev_position[1], r_off, g_off, b_off)
 
     if position[1] > 7:
         left_to_right = False
