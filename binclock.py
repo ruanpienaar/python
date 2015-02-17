@@ -110,34 +110,34 @@ def matrix_to_hat(matrix):
     # #   unicorn.set_pixel(1, 0, r, g, b)
 
     if matrix[2][0] == 0:
-        unicorn.set_pixel(1, 7, r_off, g_off, b_off)
+        unicorn.set_pixel(2, 7, r_off, g_off, b_off)
     elif matrix[2][0] == 1:
-        unicorn.set_pixel(1, 7, r_on, g_on, b_on)
+        unicorn.set_pixel(2, 7, r_on, g_on, b_on)
 
     if matrix[2][1] == 0:
-        unicorn.set_pixel(1, 6, r_off, g_off, b_off)
+        unicorn.set_pixel(2, 6, r_off, g_off, b_off)
     elif matrix[2][1] == 1:
-        unicorn.set_pixel(1, 6, r_on, g_on, b_on)
+        unicorn.set_pixel(2, 6, r_on, g_on, b_on)
 
     if matrix[2][2] == 0:
-        unicorn.set_pixel(1, 5, r_off, g_off, b_off)
+        unicorn.set_pixel(2, 5, r_off, g_off, b_off)
     elif matrix[2][2] == 1:
-        unicorn.set_pixel(1, 5, r_on, g_on, b_on)
+        unicorn.set_pixel(2, 5, r_on, g_on, b_on)
 
     if matrix[2][3] == 0:
-        unicorn.set_pixel(1, 4, r_off, g_off, b_off)
+        unicorn.set_pixel(2, 4, r_off, g_off, b_off)
     elif matrix[2][3] == 1:
-        unicorn.set_pixel(1, 4, r_on, g_on, b_on)
+        unicorn.set_pixel(2, 4, r_on, g_on, b_on)
 
     if matrix[2][4] == 0:
-        unicorn.set_pixel(1, 3, r_off, g_off, b_off)
+        unicorn.set_pixel(2, 3, r_off, g_off, b_off)
     elif matrix[2][4] == 1:
-        unicorn.set_pixel(1, 3, r_on, g_on, b_on)
+        unicorn.set_pixel(2, 3, r_on, g_on, b_on)
 
     if matrix[2][5] == 0:
-        unicorn.set_pixel(1, 2, r_off, g_off, b_off)
+        unicorn.set_pixel(2, 2, r_off, g_off, b_off)
     elif matrix[2][5] == 1:
-        unicorn.set_pixel(1, 2, r_on, g_on, b_on)
+        unicorn.set_pixel(2, 2, r_on, g_on, b_on)
 
     # unicorn.set_pixel(2, 7, r, g, b)
     # unicorn.set_pixel(2, 6, r, g, b)
@@ -149,34 +149,34 @@ def matrix_to_hat(matrix):
     # unicorn.set_pixel(2, 0, r, g, b)
 
     if matrix[3][0] == 0:
-        unicorn.set_pixel(1, 7, r_off, g_off, b_off)
+        unicorn.set_pixel(3, 7, r_off, g_off, b_off)
     elif matrix[3][0] == 1:
-        unicorn.set_pixel(1, 7, r_on, g_on, b_on)
+        unicorn.set_pixel(3, 7, r_on, g_on, b_on)
 
     if matrix[3][1] == 0:
-        unicorn.set_pixel(1, 6, r_off, g_off, b_off)
+        unicorn.set_pixel(3, 6, r_off, g_off, b_off)
     elif matrix[3][1] == 1:
-        unicorn.set_pixel(1, 6, r_on, g_on, b_on)
+        unicorn.set_pixel(3, 6, r_on, g_on, b_on)
 
     if matrix[3][2] == 0:
-        unicorn.set_pixel(1, 5, r_off, g_off, b_off)
+        unicorn.set_pixel(3, 5, r_off, g_off, b_off)
     elif matrix[3][2] == 1:
-        unicorn.set_pixel(1, 5, r_on, g_on, b_on)
+        unicorn.set_pixel(3, 5, r_on, g_on, b_on)
 
     if matrix[3][3] == 0:
-        unicorn.set_pixel(1, 4, r_off, g_off, b_off)
+        unicorn.set_pixel(3, 4, r_off, g_off, b_off)
     elif matrix[3][3] == 1:
-        unicorn.set_pixel(1, 4, r_on, g_on, b_on)
+        unicorn.set_pixel(3, 4, r_on, g_on, b_on)
 
     if matrix[3][4] == 0:
-        unicorn.set_pixel(1, 3, r_off, g_off, b_off)
+        unicorn.set_pixel(3, 3, r_off, g_off, b_off)
     elif matrix[3][4] == 1:
-        unicorn.set_pixel(1, 3, r_on, g_on, b_on)
+        unicorn.set_pixel(3, 3, r_on, g_on, b_on)
 
     if matrix[3][5] == 0:
-        unicorn.set_pixel(1, 2, r_off, g_off, b_off)
+        unicorn.set_pixel(3, 2, r_off, g_off, b_off)
     elif matrix[3][5] == 1:
-        unicorn.set_pixel(1, 2, r_on, g_on, b_on)
+        unicorn.set_pixel(3, 2, r_on, g_on, b_on)
 
     # unicorn.set_pixel(3, 7, r, g, b)
     # unicorn.set_pixel(3, 6, r, g, b)
