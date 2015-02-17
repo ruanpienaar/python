@@ -40,7 +40,7 @@ while True:
     elif hor_pos == 0:
         go_down = True
         position = (position[0]-1, position[1])
-    else
+    else:
         if go_left:
             position = (position[0], position[1]+1)
         else:
