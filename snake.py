@@ -52,4 +52,4 @@ while True:
     prev_position = position
     unicorn.set_pixel(position[0], position[1], r_on, g_on, b_on)
     unicorn.show()
-    time.sleep(0.001)
+    time.sleep(0.5)
