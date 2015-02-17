@@ -37,7 +37,7 @@ while True:
             position = (position[0]+1, position[1])
         else:
             position = (position[0]-1, position[1])
-    elif ver_pos == 0:
+    elif ver_pos < 0:
         go_left = True
         if go_down:
             position = (position[0]+1, position[1])
