@@ -29,9 +29,9 @@ while True:
     hor_pos = position[0]
     ver_pos = position[1]
 
-    if hor_pos == 7
+    if hor_pos == 7:
         go_down = False
-    elif hor_pos == 0
+    elif hor_pos == 0:
         go_down = True
 
     if ver_pos == 7:
