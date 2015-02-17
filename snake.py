@@ -36,13 +36,13 @@ while True:
             position = (position[0]+1, position[1])
         else:
             position = (position[0]-1, position[1])
-        right_to_left = False
-    elif position[1] =< 0:
+            right_to_left = False
+    elif position[1] == 0:
         if going_forward:
             position = (position[0]+1, position[1])
         else:
             position = (position[0]-1, position[1])
-        right_to_left = True
+            right_to_left = True
 
     if right_to_left:
         position = (position[0], position[1]+1)
