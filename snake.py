@@ -9,6 +9,8 @@ full_size = False
 going_forward = True
 right_to_left = True
 
+unicorn.brightness(0.75)
+
 while True:
 
     rgb_on  = colorsys.hsv_to_rgb(0.5, 0.5, 0.5)
@@ -22,8 +24,6 @@ while True:
     g_off = int(rgb_off[1]*255.0)
     b_off = int(rgb_off[2]*255.0)
 
-    # TODO: fix out of bounds
-    # Switch off previous light
     unicorn.set_pixel(prev_position[0], prev_position[1], r_off, g_off, b_off)
 
     if position[0] >= 7:
@@ -49,30 +49,7 @@ while True:
     else:
         position = (position[0], position[1]-1)
 
-        # if going_forward:
-        #     position = (position[0]+1, position[1])
-        # else:
-        #     position = (position[0]-1, position[1])
-
-        # # Turn around
-        # if right_to_left:
-        #     right_to_left = False
-        # else:
-        #     right_to_left = True
     prev_position = position
     unicorn.set_pixel(position[0], position[1], r_on, g_on, b_on)
     unicorn.show()
     time.sleep(0.001)
-
-    # if full_size:
-    #     foreach positions , enable light.
-    # else
-    #     if len( positions ) < 5
-    #         if going_left:
-    #             pos_col += 1
-    #         elif going_right:
-    #             pos_col -= 1
-    #         positions = positions + ((pos_row, pos_col))
-    #         if len( positions ) == 5
-    #             full_size = True
-    #         unicorn.set_pixel(0, 0, r_on, g_on, b_on)
