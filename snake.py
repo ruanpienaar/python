@@ -22,10 +22,11 @@ while True:
     g_off = int(rgb_off[1]*255.0)
     b_off = int(rgb_off[2]*255.0)
 
+    # TODO: fix out of bounds
     # Switch off previous light
-    #unicorn.set_pixel(prev_position[0], prev_position[1], r_off, g_off, b_off)
+    # unicorn.set_pixel(prev_position[0], prev_position[1], r_off, g_off, b_off)
 
-    if position[1] > 7:
+    if position[1] >= 7:
         print ">7"
         right_to_left = False
     elif position[1] == 0:
