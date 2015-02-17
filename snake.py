@@ -28,7 +28,7 @@ while True:
 
     if position[0] >= 7:
         going_forward = False
-    elif position[0] == 0
+    elif position[0] == 0:
         going_forward = True
 
     if position[1] >= 7:
