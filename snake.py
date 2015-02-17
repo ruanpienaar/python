@@ -26,20 +26,28 @@ while True:
     # Switch off previous light
     unicorn.set_pixel(prev_position[0], prev_position[1], r_off, g_off, b_off)
 
+    if position[0] >= 7:
+        going_forward = False
+    elif position[0] == 0
+        going_forward = True
+
     if position[1] >= 7:
-        print ">7"
+        if going_forward:
+            position = (position[0]+1, position[1])
+        else:
+            position = (position[0]-1, position[1])
         right_to_left = False
     elif position[1] == 0:
-        print "==0"
+        if going_forward:
+            position = (position[0]+1, position[1])
+        else:
+            position = (position[0]-1, position[1])
         right_to_left = True
 
     if right_to_left:
-        print "right to left"
         position = (position[0], position[1]+1)
     else:
-        print "left to right"
         position = (position[0], position[1]-1)
-
 
         # if going_forward:
         #     position = (position[0]+1, position[1])
