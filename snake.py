@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+import unicornhat as unicorn
+import time, colorsys
+
 # 0,0
 
 # 0,0 0,1
