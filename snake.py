@@ -29,6 +29,10 @@ while True:
     hor_pos = position[0]
     ver_pos = position[1]
 
+    if hor_pos == 7
+        go_down = False
+    elif hor_pos == 0
+        go_down = True
 
     if ver_pos == 7:
         go_left = False
@@ -39,9 +43,9 @@ while True:
     elif ver_pos == 0:
         go_left = True
         if go_down:
-            position = (position[0]+1, position[1])
+            position = (position[0]+1, position[1]+1)
         else:
-            position = (position[0]-1, position[1])
+            position = (position[0]-1, position[1]+1)
         position = (position[0], position[1]+1)
     else:
         if go_left:
