@@ -29,17 +29,19 @@ while True:
     hor_pos = position[0]
     ver_pos = position[1]
 
+    print hor_pos, ver_pos
+
     if ver_pos == 7:
         if go_down:
             position = (position[0]+1, position[1])
-        else
+        else:
             position = (position[0]-1, position[1])
     elif ver_pos == 0:
         if go_down:
             position = (position[0]+1, position[1])
-        else
+        else:
             position = (position[0]-1, position[1])
-    else
+    else:
         position = (position[0], position[1]+1)
 
     prev_position = position
