@@ -48,7 +48,7 @@ while True:
 
     if position[1] > 8:
         left_to_right = False
-    elif position[1] == 0
+    elif position[1] == 0:
         left_to_right = True
 
     if left_to_right:
