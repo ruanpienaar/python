@@ -43,11 +43,13 @@ while True:
         else:
             position = (position[0]-1, position[1])
         right_to_left = True
-
-    if right_to_left:
-        position = (position[0], position[1]+1)
     else:
-        position = (position[0], position[1]-1)
+        if right_to_left:
+            position = (position[0], position[1]+1)
+        else:
+            position = (position[0], position[1]-1)
+
+
 
     prev_position = position
     unicorn.set_pixel(position[0], position[1], r_on, g_on, b_on)
