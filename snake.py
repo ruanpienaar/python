@@ -31,13 +31,13 @@ while True:
     elif position[0] == 0:
         going_forward = True
 
-    if position[1] > 7:
+    if position[1] >= 7:
         if going_forward:
             position = (position[0]+1, position[1])
         else:
             position = (position[0]-1, position[1])
         right_to_left = False
-    elif position[1] < 0:
+    elif position[1] =< 0:
         if going_forward:
             position = (position[0]+1, position[1])
         else:
