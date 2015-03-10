@@ -2,18 +2,25 @@
 
 import unicornhat as unicorn
 import time, colorsys
+import numpy as np
 
-position = (0, 0)
-prev_position = (0, 0)
-full_size = False
-go_down = True
-go_left = True
+x = 0
+y = 0
+prev_x = 0
+prev_y = 0
+sleep = 0.5
+faster = True
+amount = 1
+count = 99
+#stack
 
-unicorn.brightness(0.75)
+unicorn.brightness(0.25)
 
-while True:
-
-    rgb_on  = colorsys.hsv_to_rgb(0.5, 0.5, 0.5)
+def uni_show(prev_x, prev_y):
+    a = np.random.rand(1)
+    b = np.random.rand(1)
+    c = np.random.rand(1)
+    rgb_on  = colorsys.hsv_to_rgb(a, b, c)
     rgb_off = colorsys.hsv_to_rgb(0.5, 0.5, 0.1)
 
     r_on  = int(rgb_on[0]*255.0)
@@ -22,31 +29,44 @@ while True:
 
     r_off = int(rgb_off[0]*255.0)
     g_off = int(rgb_off[1]*255.0)
-    b_off = int(rgb_off[2]*255.0)
+    b_off = int(rgb_off[2]*255.0)	
 
-    unicorn.set_pixel(prev_position[0], prev_position[1], r_off, g_off, b_off)
+    a = np.random.rand(1)
+    x = int(a[0] * 7)
+    b = np.random.rand(1)
+    y = int(b[0] * 7)
 
-    hor_pos = position[0]
-    ver_pos = position[1]
+    unicorn.set_pixel(x, y, r_on, g_on, b_on)
+    unicorn.set_pixel(prev_x, prev_y, r_off, g_off, b_off)
 
-    print hor_pos, ver_pos
-
-    if ver_pos == 7:
-        if go_down:
-            position = (position[0]+1, position[1])
-        else:
-            position = (position[0]-1, position[1])
-    elif ver_pos == 0:
-        if go_down:
-            position = (position[0]+1, position[1])
-        else:
-            position = (position[0]-1, position[1])
-    else:
-        position = (position[0], position[1]+1)
-
-    prev_position = position
-
-    print position[0], position[1]
-    unicorn.set_pixel(position[0], position[1], r_on, g_on, b_on)
     unicorn.show()
-    time.sleep(0.5)
+    return x, y
+
+while True:
+
+   count += 1
+   if count % 10 == 0:
+	amount += 1
+	print amount
+
+   for a in range(amount):
+      x, y = uni_show(prev_x, prev_y)
+      prev_x = x
+      prev_y = y
+
+#   if faster:
+#     if sleep > 0.1:
+#       sleep -= 0.1
+#     else:
+#       sleep += 0.1
+#       faster = False
+#   else:
+#     if sleep < 0.5:
+#       sleep += 0.1
+#     else:
+#       sleep -= 0.1
+#       faster = True
+
+   #print sleep
+		  
+   time.sleep(0.1)

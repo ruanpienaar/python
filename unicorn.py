@@ -4,7 +4,7 @@ import unicornhat as unicorn
 import time, colorsys
 import numpy as np
 
-unicorn.brightness(0.45)
+unicorn.brightness(0.9)
 #bright = 0.01
 
 h = 0.05
@@ -16,14 +16,9 @@ col=-1
 
 while True:
 
-#    bright += 0.01
-#    if abs(bright) > 1.0:
-#	bright = 0.01
-#    unicorn.brightness(bright)  
-
-    #h += 0.01
-    #s += 0.01
-    #v += 0.01
+    h += 0.01
+    s += 0.01
+    v += 0.01
 
     col += 1
     if abs(col) > 7:
