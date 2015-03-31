@@ -14,7 +14,7 @@ amount = 1
 count = 99
 #stack
 
-unicorn.brightness(0.25)
+unicorn.brightness(0.85)
 
 def uni_show(prev_x, prev_y):
     a = np.random.rand(1)
@@ -32,9 +32,16 @@ def uni_show(prev_x, prev_y):
     b_off = int(rgb_off[2]*255.0)	
 
     a = np.random.rand(1)
-    x = int(a[0] * 7)
-    b = np.random.rand(1)
-    y = int(b[0] * 7)
+    x = int(a[0] * 8)-1
+    b = np.random.rand(1)	
+    y = int(b[0] * 8)-1
+    
+    #print x, y
+    
+    if x < 0:
+      x = 0
+    if y < 0:
+      y = 0
 
     unicorn.set_pixel(x, y, r_on, g_on, b_on)
     unicorn.set_pixel(prev_x, prev_y, r_off, g_off, b_off)
@@ -43,30 +50,12 @@ def uni_show(prev_x, prev_y):
     return x, y
 
 while True:
-
    count += 1
    if count % 10 == 0:
 	amount += 1
-	print amount
-
+	#print amount
    for a in range(amount):
       x, y = uni_show(prev_x, prev_y)
       prev_x = x
       prev_y = y
-
-#   if faster:
-#     if sleep > 0.1:
-#       sleep -= 0.1
-#     else:
-#       sleep += 0.1
-#       faster = False
-#   else:
-#     if sleep < 0.5:
-#       sleep += 0.1
-#     else:
-#       sleep -= 0.1
-#       faster = True
-
-   #print sleep
-		  
    time.sleep(0.1)
