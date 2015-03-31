@@ -5,7 +5,7 @@ import time, colorsys
 import math
 import numpy as np
 
-unicorn.brightness(0.5)
+unicorn.brightness(0.75)
 
 def make_gaussian(fwhm, x0, y0):
     x = np.arange(0, 8, 1, float)
