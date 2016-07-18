@@ -106,10 +106,9 @@ def main(restArgs):
         httpd.serve_forever()
     except getopt.GetoptError:
         usage()
-    except Exception as error:
-        print error
+    except Exception:
+        print Exception
         usage()
-
     
 if __name__ == "__main__":
      main(sys.argv[1:])
