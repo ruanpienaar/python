@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div><h1>Brokers</h1></div>
+    <div><a href="{{ url_for('broker.create') }}">Create new broker</a></div>
+    <div>Brokers</div>
+    {% for broker in brokers %}
+        <hr />
+        <div>hostname : {{ broker['hostname'] }}</div>
+        <div>port : {{ broker['port'] }}</div>
+        <div><a href="{{ url_for('broker.list_topics', host=broker['hostname'], port=broker['port']) }}">Topics</a></div>
+    {% endfor %}
+{% endblock %}

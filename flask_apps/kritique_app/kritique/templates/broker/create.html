@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div><h1>Create Broker</h1></div>
+    <hr />
+        <form method="post" >
+            <label>Broker Hostname</label>
+            <input type="text" name="broker_hostname" />
+            <label>Broker Port</label>
+            <input type="text" name="broker_port">
+            <button>Create</button>
+        </form>
+    <div></div>
+    
+{% endblock %}
