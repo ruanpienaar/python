@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>List {{topic}} messages:</div>
+    {% for msg in consumer %}
+        <div>{{ msg.value }}</div>
+    {% endfor %}
+{% endblock %}

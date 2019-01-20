@@ -3,6 +3,6 @@
 {% block content %}
     <div><h1>Topics</h1></div>
     {% for topic in topics %}
-        <div>{{topic}}</div>
+        <div><a href="{{ url_for('topic.list_messages', host=request.args.get('host'), port=request.args.get('port'), topic=topic) }}">{{topic}}</a></div>
     {% endfor %}
 {% endblock %}

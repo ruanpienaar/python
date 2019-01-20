@@ -2,21 +2,20 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for
 )
 
+# Db Access
+from kritique.db import get_db
+
 # Kafka Related imports
 from kafka import KafkaConsumer
 
-bp = Blueprint('broker', __name__, url_prefix='/broker')
+bp = Blueprint('broker', __name__)
 
 @bp.route('/')
 def index():
-    b_host = 'localhost'
-    b_port = '9092'
-    brokers = [
-        {
-            "hostname": b_host,
-            "port": b_port
-        }
-    ]
+    db = get_db()
+    brokers = db.execute(
+        'SELECT * FROM broker ORDER BY hostname'
+    ).fetchall()
     return render_template('broker/index.html', brokers=brokers)
 
 @bp.route('/create', methods=('GET', 'POST'))
@@ -24,7 +23,14 @@ def create():
     if request.method == 'POST':
         b_host = request.form['broker_hostname']
         b_port = request.form['broker_port']
-        
+        print b_host
+        db = get_db()
+        db.execute(
+            'INSERT INTO broker (hostname, port)'
+            'VALUES (?, ?)',
+            (b_host, b_port)
+        )
+        db.commit()
         return redirect(url_for('broker.index'))
     return render_template('broker/create.html')
 

@@ -35,5 +35,9 @@ def create_app(test_config=None):
     # Brokers
     from . import broker
     app.register_blueprint(broker.bp)
+    app.add_url_rule('/', endpoint='index')
+
+    from . import topic
+    app.register_blueprint(topic.bp)
 
     return app
