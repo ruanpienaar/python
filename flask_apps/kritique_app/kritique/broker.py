@@ -36,8 +36,10 @@ def create():
 
 @bp.route('/list_topics', methods=('GET', 'POST'))
 def list_topics():
-    b_host = 'localhost'
-    b_port = '9092'
+    # b_host = 'localhost'
+    # b_port = '9092'
+    b_host = request.args.get('host')
+    b_port = request.args.get('port')
     consumer = KafkaConsumer(bootstrap_servers=b_host+':'+b_port)
     # print consumer.topics()
     return render_template('broker/list_topics.html', topics=consumer.topics())
