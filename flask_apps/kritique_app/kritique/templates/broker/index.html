@@ -9,5 +9,6 @@
         <div>hostname : {{ broker['hostname'] }}</div>
         <div>port : {{ broker['port'] }}</div>
         <div><a href="{{ url_for('broker.list_topics', host=broker['hostname'], port=broker['port']) }}">Topics</a></div>
+        <!-- <div><a href="{{ url_for('broker.delete_broker', id=broker['id']) }}">Delete</a></div> -->
     {% endfor %}
 {% endblock %}

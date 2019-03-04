@@ -23,7 +23,6 @@ def create():
     if request.method == 'POST':
         b_host = request.form['broker_hostname']
         b_port = request.form['broker_port']
-        print b_host
         db = get_db()
         db.execute(
             'INSERT INTO broker (hostname, port)'
@@ -43,3 +42,12 @@ def list_topics():
     consumer = KafkaConsumer(bootstrap_servers=b_host+':'+b_port)
     # print consumer.topics()
     return render_template('broker/list_topics.html', topics=consumer.topics())
+
+@bp.route('/delete_broker', methods=('POST',))
+def delete_broker():
+    print ""
+    #     id = request.args.get('id')
+    #     db = get_db()
+    #     sql = 'DELETE FROM tasks WHERE id=?'
+    #     cur = conn.cursor()
+    #     cur.execute(sql, (id,))
