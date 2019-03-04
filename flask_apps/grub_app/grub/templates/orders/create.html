@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+    <div><h1>Create Order</h1></div>
+    <hr />
+        <form method="post" >
+            <div class="form-group">
+
+                <label for="orderer">Who's ordering?</label>
+                <select class="form-control" name="orderer">
+                    {% for user in users %}
+                    <option id="{{ user['username'] }}">{{ user['username'] }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="order_menu">Order Menu Link</label>
+                <input class="form-control" type="text" name="order_menu" />
+
+                <label for="datepicker">Date</label>
+                <input class="form-control" type="text" name="datepicker" id="datepicker">
+
+                <label for="timepicker">Time</label>
+                <input class="form-control" type="text" name="timepicker" id="timepicker">
+
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    <div></div>
+
+{% endblock %}
