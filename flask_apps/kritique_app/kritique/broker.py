@@ -43,11 +43,22 @@ def list_topics():
     # print consumer.topics()
     return render_template('broker/list_topics.html', topics=consumer.topics())
 
-@bp.route('/delete_broker', methods=('POST',))
+@bp.route('/edit_broker', methods=('GET', 'POST'))
+def edit_broker():
+    if request.method == 'POST':
+        print "UPDATE"
+        return redirect(url_for('broker.index'))
+    else
+        
+    id = request.args.get('id')
+    db = get_db()
+    return render_template('broker/edit.html')
+
+@bp.route('/delete_broker', methods=('GET',))
 def delete_broker():
-    print ""
-    #     id = request.args.get('id')
-    #     db = get_db()
-    #     sql = 'DELETE FROM tasks WHERE id=?'
-    #     cur = conn.cursor()
-    #     cur.execute(sql, (id,))
+    id = request.args.get('id')
+    db = get_db()
+    sql = 'DELETE FROM broker WHERE id=?'
+    db.execute(sql, (id,))
+    db.commit()
+    return redirect(url_for('broker.index'))

@@ -17,8 +17,8 @@ def list_messages():
     topic = request.args.get('topic')
     # TODO: make a consumer module, that's generic
     consumer = KafkaConsumer(bootstrap_servers=b_host+':'+b_port,
-                                     auto_offset_reset='earliest',
-                                     consumer_timeout_ms=1000)
+                             auto_offset_reset='earliest',
+                             consumer_timeout_ms=1000)
     consumer.subscribe([topic])    
     # for message in consumer:
         # print(message)
