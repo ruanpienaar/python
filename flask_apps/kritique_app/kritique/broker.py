@@ -48,7 +48,7 @@ def edit_broker():
     if request.method == 'POST':
         print "UPDATE"
         return redirect(url_for('broker.index'))
-    else
+    #else
         
     id = request.args.get('id')
     db = get_db()
