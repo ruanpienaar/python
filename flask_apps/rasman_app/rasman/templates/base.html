@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <meta name="description" content="raspberry pi management">
+  <meta name="author" content="Ruan Pienaar">
+
+  <title>rasman</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}">
+</head>
+
+<body>
+    <div class="container">
+      <table class="table">
+        <tr>
+          <tr>
+            <td><a href="{{ url_for('manage.index') }}">Home</a></td>
+            <td><a href="search">Search for Pi's</a></td>
+            <td><a href="add">Add new Pi</a></td>
+          </tr>
+        </tr>
+      </table>
+
+    </div>
+    <hr />
+
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+    {% block content %}{% endblock %}
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

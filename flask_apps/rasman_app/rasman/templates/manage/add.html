@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action="add" method="post">
+    <label for="hostname">Hostname</label>
+    <input type="text" name="hostname" value="{{ pi.hostname }}" />
+    <label for="passwd">Password</label>
+    <input type="text" name="passwd" value="{{ pi.passwd }}" />
+    <button>Save</button>
+    <a href="/">Cancel</a>
+</form>
+
+{% endblock %}

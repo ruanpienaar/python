@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h4><div>Your machine details</div></h4>
+    <div class="container">
+        <table class="table">
+            {% for local_detail in index['local_details'] %}
+            <tr>
+                <td>{{ local_detail }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <h4><div>List of PI's</div></h4>
+
+    <div class="container">
+        <table class="table">
+            {% for pi in index['pis'] %}
+                <tr>
+                    <td>
+                        <a href="{{ url_for('manage.details', hostname=pi.hostname) }}">{{ pi.hostname }}</a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('manage.edit', hostname=pi.hostname) }}">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

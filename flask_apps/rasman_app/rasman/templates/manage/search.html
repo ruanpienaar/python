@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <h1>Search for devices on your network</h1>
+    <button type="button" id="search">Search</button>
+    <div id="result"></div>
+    <img src="{{ url_for('static', filename='loading.gif') }}" id="loading" />    
+</div>
+
+<script type="text/javascript">
+
+  $("#loading").attr("class", "invisible");
+
+  $(function() {
+    $('#search').bind('click', function() {
+    
+      $("#loading").attr("class", "visible");
+    
+      $.getJSON('/_ip_scan', {
+        //a: $('input[name="a"]').val(),
+        //b: $('input[name="b"]').val()
+      }, function(data) {
+        //$("#result").text(JSON.stringify(data))
+        
+        $("#result").empty();
+        
+        for(var key in data){
+          //alert(key);
+          $("#result").append("<div>"+key+" : "+data[key]+"</div>");
+        }
+        
+        $("#loading").attr("class", "invisible");
+      });
+      $("#loading").attr("class", "invisible");
+      $("#result").append("<div>Backend error</div>");
+      return false;
+    });
+  });
+</script>
+
+{% endblock %}
