@@ -52,7 +52,11 @@ def add():
 @bp.route('/edit', methods=('GET', 'POST'))
 def edit():
     if request.method == 'POST':
-        # "UPDATE hosts SET hostname = ? WHERE hostname"
+        hostname = request.form['hostname']
+        old_hostname = request.form['old_hostname']
+        db = get_db()
+        db.execute("UPDATE hosts SET hostname = ? WHERE hostname = ?", (hostname, old_hostname))
+        db.commit()
         return redirect(url_for('index'))
     db = get_db()
     hostname = request.args.get('hostname')
@@ -60,11 +64,22 @@ def edit():
     print(pi)
     return render_template('manage/edit.html', pi=pi)
 
-@bp.route('/details', methods=('GET',))
+@bp.route('/details', methods=('GET', 'POST'))
 def details():
+    if request.method == 'POST':
+        hostname = request.form['hostname']
+        old_url = request.form['old_pi_url'].strip()
+        new_url = request.form['pi_url'].strip()
+        sed_cmd = "sudo sed -i 's#SOFTWARE_CHROMIUM_AUTOSTART_URL="+old_url+"#SOFTWARE_CHROMIUM_AUTOSTART_URL="+new_url+"#g' /DietPi/dietpi.txt && echo $?"
+        r1 = ssh(hostname, "dietpi", "D4shb04rdp1", sed_cmd)
+        print(r1)
+        # if r1 == "0":
+        r2 = ssh(hostname, "dietpi", "D4shb04rdp1", "sudo reboot")
+        print('shutdown ' + r2)
+        return redirect(url_for('index'))
     hostname = request.args.get('hostname')
-    result = ssh(hostname, "dietpi", "D4shb04rdp1", "cat /DietPi/dietpi.txt | grep SOFTWARE_CHROMIUM_AUTOSTART_URL")
-    return render_template('manage/details.html', result=result)
+    result = ssh(hostname, "dietpi", "D4shb04rdp1", "cat /DietPi/dietpi.txt | grep SOFTWARE_CHROMIUM_AUTOSTART_URL | awk -F= '{print$2}'")
+    return render_template('manage/details.html', result=result, hostname=hostname)
 
 @bp.route('/search', methods=('GET',))
 def search():
@@ -133,5 +148,6 @@ def ssh(host, username, passwd, cmd):
     for line in stdout:
         #print('... ' + line.strip('\n'))
         response += line
+    response.strip('\n')
     client.close()
     return response

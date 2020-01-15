@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<div class="container">
-    <h3>DETAILS</h3>
-    <div>{{ result }}</div>
-</div>
-
+<form action="details" method="post">
+    <div class="container">
+        <h3>DETAILS</h3>
+        <input type="hidden" name="hostname" value="{{ hostname }}" />
+        <input type="hidden" name="old_pi_url" value="{{ result }}" />
+        <div>
+            <input type="text" style="min-width: 200px; width: 1000px;" name="pi_url" value="{{ result }}" />
+        <button>Update</button>
+    </div>
+</form>
 {% endblock %}

@@ -3,6 +3,7 @@
 {% block content %}
 
 <form action="{{ url_for('manage.edit') }}" method="POST">
+    <input type="hidden" name="old_hostname" value="{{ pi.hostname }}" />
     <input type="text" name="hostname" value="{{ pi.hostname }}" />
     <button>Save</button>
 </form>
