@@ -2,17 +2,7 @@
 
 {% block content %}
 
-<script type="text/javascript">
-    $('document').ready(function(){
-        $('#refresh_btn').click(function(){
-            $.get("/_refresh_node?hostname="+"{{ hostname }}", function( data ){
-                alert(data)
-            })
-        })
-    })
-</script>
-
-<form action="{{ url_for('manage.edit') }}" method="POST">
+<!-- <form action="{{ url_for('manage.edit') }}" method="POST">
     <label for="hostname">hostname / IP</label>
     <input type="hidden" name="old_hostname" value="{{ pi.hostname }}" />
     <input type="text" name="hostname" value="{{ pi.hostname }}" />
@@ -28,6 +18,8 @@
     <br />
     <button>Save</button>
     <a href="/">Cancel</a>
-</form>
+</form> -->
+
+Edit TV
 
 {% endblock %}

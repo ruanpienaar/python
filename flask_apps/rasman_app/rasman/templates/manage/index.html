@@ -1,8 +1,92 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container">
-    <h4><div>Your machine details</div></h4>
+<div class="container-fluid">
+
     <div class="container">
+
+        <div class="row">
+        <div class="col-md-4">
+
+        <h4>Offce layout</h4>
+        <table class="table">
+            <thead>
+                <th>EAST</th><th>&nbsp;</th><th>WEST</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="3" style="text-align: center;"><strong>North</strong></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" style="text-align: center;">-- Trader --</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td><td>&nbsp;</td><td><a href="tv.html?id=12">TV 12 - pi?</a></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td><td>&nbsp;</td><td><a href="tv.html?id=11">TV 11 - pi?</a></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td><td>&nbsp;</td><td><a href="tv.html?id=10">TV 10 - pi?</a></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" style="text-align: center;">-- Office --</td>
+                </tr>
+
+                <tr>
+                    <td><a href="tv.html?id=01">TV 01 - pi?</a></td><td>&nbsp;</td><td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><a href="tv.html?id=02">TV 02 - pi?</a></td><td>&nbsp;</td><td><a href="tv.html?id=09">TV 09 - pi?</a></td>
+                </tr>
+                <tr>
+                    <td><a href="tv.html?id=03">TV 03 - pi?</a></td><td>&nbsp;</td><td><a href="tv.html?id=08">TV 03 - pi?</a></td>
+                </tr>
+                <tr>
+                    <td><a href="tv.html?id=04">TV 04 - pi?</a></td><td>&nbsp;</td><td><a href="tv.html?id=07">TV 04 - pi?</a></td>
+                </tr>
+                <tr>
+                    <td><a href="tv.html?id=05">TV 05 - pi?</a></td><td>&nbsp;</td><td><a href="tv.html?id=06">TV 06 - pi?</a></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" style="text-align: center;"><strong>South</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="col-md-8">
+        <h4><div>List of PI's</div></h4>
+        <table class="table table-stripped">
+            <thead>
+                <th>hostname</th>
+                <th>description</th>
+                <th>port</th>
+                <th>Can Connect</th>
+            </thead>
+            <tbody>
+            {% for pi in index['pis'] %}
+                <tr>
+                    <td><a href="{{ url_for('manage.details', hostname=pi.hostname) }}">{{ pi.hostname }}</a></td>
+                    <td>{{ pi.description }}</td>
+                    <td>{{ pi.port }}</td>
+                    <td>{{ pi.can_connect }}</td>
+                    <td><a href="{{ url_for('manage.edit', hostname=pi.hostname) }}">Edit</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    <!-- <h4><div>Your machine details</div></h4> -->
+    <!-- <div class="container">
         <table class="table">
             {% for local_detail in index['local_details'] %}
             <tr>
@@ -10,23 +94,7 @@
             </tr>
             {% endfor %}
         </table>
-    </div>
+    </div> -->
 
-    <h4><div>List of PI's</div></h4>
-
-    <div class="container">
-        <table class="table">
-            {% for pi in index['pis'] %}
-                <tr>
-                    <td>
-                        <a href="{{ url_for('manage.details', hostname=pi.hostname) }}">{{ pi.hostname }}</a>
-                    </td>
-                    <td>
-                        <a href="{{ url_for('manage.edit', hostname=pi.hostname) }}">Edit</a>
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
 </div>
 {% endblock %}

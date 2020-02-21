@@ -1,14 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+<script type="text/javascript">
+    $('document').ready(function(){
+        $('#refresh_btn').click(function(){
+            $.get("/_refresh_node?hostname="+"{{ hostname }}", function( data ){
+                alert(data)
+            })
+        })
+    })
+</script>
+
 <form action="details" method="post">
-    <div class="container">
-        <h3>DETAILS</h3>
+    <div class="container-fluid">
+
+        <h1><button type="button" id="refresh_btn">Refresh</button></h1>
+
+
+        <label for="hostname" style="color: yellow; background-color: black;">Url</label>
         <input type="hidden" name="hostname" value="{{ hostname }}" />
         <input type="hidden" name="old_pi_url" value="{{ result }}" />
         <div>
-            <input type="text" style="min-width: 200px; width: 1000px;" name="pi_url" value="{{ result }}" />
-        <button>Update</button>
-    </div>
+            <input type="text" style="min-width: 200px; width: 1200px;" name="pi_url" value="{{ result }}" />
+            <br />
+            <button>Update</button>
+        </div>
 </form>
+
+<!-- <iframe src="{{ result }}" frameborder="0" style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe> -->
+<iframe src="{{ result }}" frameborder="0" style="overflow:hidden; overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;position:absolute;top:0px;left:0px;right:0px;bottom:0px; z-index: -1" height="100%" width="100%"></iframe>
+
 {% endblock %}

@@ -1,11 +1,42 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<script type="text/javascript">
+    $('document').ready(function(){
+        $('#test_btn').click(function(){
+
+            var hostname = $('#hostname').val();
+            var port = $("#port").val();
+
+            if ( hostname != '' & port != '' ){
+                $.get("/_host_port_scan?hostname="+hostname+"&port="+port, function( data ){
+                    alert(data)
+                })
+            } else {
+                alert("enter hostname and port")
+            }
+
+        })
+    })
+</script>
+
 <form action="add" method="post">
-    <label for="hostname">Hostname</label>
-    <input type="text" name="hostname" value="{{ pi.hostname }}" />
-    <label for="passwd">Password</label>
-    <input type="text" name="passwd" value="{{ pi.passwd }}" />
+    <label for="hostname">hostname / IP</label>
+    <input type="text" id="hostname" name="hostname" value="{{ pi.hostname }}" />
+    <br />
+    <label for="description">description</label>
+    <input type="text" id="description" name="description" value="{{ pi.description }}" />
+    <br />
+    <label for="username">username</label>
+    <input type="username" id="username" name="username" value="{{ pi.username }}" />
+    <br />
+    <label for="passwd">password</label>
+    <input type="passwd" id="passwd" name="passwd" value="{{ pi.passwd }}" />
+    <br />
+    <label for="port">port</label>
+    <input type="port" id="port" name="port" value="{{ pi.port }}" />
+    <br />
+    <button type="button" id="test_btn">Test connectivity</button>
     <button>Save</button>
     <a href="/">Cancel</a>
 </form>
