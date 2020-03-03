@@ -2,32 +2,38 @@
 
 {% block content %}
 
-<script type="text/javascript">
-    $('document').ready(function(){
-        $('#refresh_btn').click(function(){
-            $.get("/_refresh_node?hostname="+"{{ hostname }}", function( data ){
-                alert(data)
-            })
-        })
-    })
-</script>
+<div class="container-fluid">
+    <div class="container">
 
-<form action="{{ url_for('manage.edit') }}" method="POST">
-    <label for="hostname">hostname / IP</label>
-    <input type="hidden" name="old_hostname" value="{{ pi.hostname }}" />
-    <input type="text" name="hostname" value="{{ pi.hostname }}" />
-    <br />
-    <label for="description">description</label>
-    <input type="text" name="description" value="{{ pi.description }}" />
-    <br />
-    <label for="username">username</label>
-    <input type="text" name="username" value="{{ pi.username }}" />
-    <br />
-    <label for="passwd">password</label>
-    <input type="text" name="passwd" value="{{ pi.passwd }}" />
-    <br />
-    <button>Save</button>
-    <a href="/">Cancel</a>
-</form>
+        <script type="text/javascript">
+            $('document').ready(function(){
+                $('#refresh_btn').click(function(){
+                    $.get("/_refresh_node?hostname="+"{{ hostname }}", function( data ){
+                        alert(data)
+                    })
+                })
+            })
+        </script>
+
+        <form action="{{ url_for('manage.edit') }}" method="POST">
+            <label for="hostname">hostname / IP</label>
+            <input type="hidden" name="old_hostname" value="{{ pi.hostname }}" />
+            <input type="text" name="hostname" value="{{ pi.hostname }}" />
+            <br />
+            <label for="description">description</label>
+            <input type="text" name="description" value="{{ pi.description }}" />
+            <br />
+            <label for="username">username</label>
+            <input type="text" name="username" value="{{ pi.username }}" />
+            <br />
+            <label for="passwd">password</label>
+            <input type="text" name="passwd" value="{{ pi.passwd }}" />
+            <br />
+            <button>Save</button>
+            <a href="/">Cancel</a>
+        </form>
+
+    </div>
+</div>
 
 {% endblock %}

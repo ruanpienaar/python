@@ -16,19 +16,19 @@ bp = Blueprint('manage', __name__)
 def index():
     db = get_db()
     pis = db.execute("SELECT * FROM hosts").fetchall()
-    # tvs = db.execute("SELECT * FROM tv").fetchall()
-    os_name = os.name
+    all_tvs = db.execute("select * from tv t LEFT join hosts h ON t.tvid = h.tvid ;").fetchall()
+    tvs = {}
+    for tv in all_tvs:
+        tvs[tv["tvid"]] = tv["hostname"]
     index = {
-        'pis': pis
-        # 'tvs': tvs
-        # 'local_details': [{'os_name': os_name}]
+        'pis': pis,
+        'tvs': tvs
     }
     return render_template('manage/index.html', index=index)
 
 @bp.route('/add', methods=('GET', 'POST'))
 def add():
     pi = {'hostname': '', 'description': '', 'passwd': ''}
-    error = None
     if request.method == 'POST':
         hostname = request.form['hostname']
         description = request.form['description']
@@ -61,11 +61,8 @@ def edit():
         db.execute("UPDATE hosts SET hostname = ?, description = ?, passwd = ? WHERE hostname = ?", (hostname, description, passwd, old_hostname))
         db.commit()
         return redirect(url_for('index'))
-    # db = get_db()
     hostname = request.args.get('hostname')
-    # pi = db.execute("SELECT * FROM hosts WHERE hostname = ?", (hostname,)).fetchone()
     pi = get_pid_details(hostname)
-    # print(pi)
     return render_template('manage/edit.html', pi=pi)
 
 @bp.route('/details', methods=('GET', 'POST'))
@@ -77,19 +74,11 @@ def details():
         new_url = request.form['pi_url'].strip()
         new_url_escp = new_url.translate(str.maketrans({"&": r"\&"}))
         sed_cmd = "sudo sed -i 's#SOFTWARE_CHROMIUM_AUTOSTART_URL="+old_url+"#SOFTWARE_CHROMIUM_AUTOSTART_URL="+new_url_escp+"#g' /DietPi/dietpi.txt && echo $?"
-        # success = ssh(hostname, pi['username'], pi['passwd'], "echo success")
-        # print(test)
-
-        # if (success == 'success\n'):
-        #     ok
-        # else:
-
-        r1 = ssh(hostname, "dietpi", "D4shb04rdp1", sed_cmd)
-        r2 = ssh(hostname, "dietpi", "D4shb04rdp1", "sudo reboot ")
+        r1 = ssh(hostname, pi['username'], pi['passwd'], sed_cmd)
+        r2 = ssh(hostname, pi['username'], pi['passwd'], "sudo reboot ")
         return redirect(url_for('index'))
     hostname = request.args.get('hostname')
     pi = get_pid_details(hostname)
-    # print(pi)
     if host_port_scan_and_set(pi['hostname'], pi['port']):
         get_url_cmd = "cat /DietPi/dietpi.txt | grep SOFTWARE_CHROMIUM_AUTOSTART_URL | awk -F'SOFTWARE_CHROMIUM_AUTOSTART_URL=' '{print$2}'"
         result = ssh(pi['hostname'], pi['username'], pi['passwd'], get_url_cmd)
@@ -97,9 +86,34 @@ def details():
     else:
         return redirect(url_for('index'))
 
-@bp.route('/search', methods=('GET',))
-def search():
-    return render_template('manage/search.html')
+# @bp.route('/search', methods=('GET',))
+# def search():
+#     return render_template('manage/search.html')
+
+@bp.route('/tv', methods=('GET', 'POST'))
+def tv():
+    db = get_db()
+    if request.method == 'POST':
+        error = None
+        hostname = request.form['hostname']
+        tvid = request.form['tvid']
+        try:
+            with db:
+                db.execute("UPDATE hosts SET tvid = ? WHERE hostname = ?", (tvid, hostname))
+                db.commit()
+        except sqlite3.IntegrityError:
+            error = "Could update host = "+hostname
+        if error is None:
+            return redirect(url_for('index'))
+        pi = {'hostname': hostname, 'passwd': passwd, 'description': description, 'username': username}
+        flash(error)
+    tvid = request.args.get('id')
+    pis = db.execute("SELECT * FROM hosts WHERE tvid is NULL").fetchall()
+    tv = {
+        'tvid': tvid,
+        'pis': pis
+    }
+    return render_template('manage/tv.html', tv=tv)
 
 @bp.route('/_ip_scan')
 def ip_scan():

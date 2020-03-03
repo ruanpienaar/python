@@ -1,25 +1,27 @@
 {% extends 'base.html' %}
-
 {% block content %}
 
-<!-- <form action="{{ url_for('manage.edit') }}" method="POST">
-    <label for="hostname">hostname / IP</label>
-    <input type="hidden" name="old_hostname" value="{{ pi.hostname }}" />
-    <input type="text" name="hostname" value="{{ pi.hostname }}" />
-    <br />
-    <label for="description">description</label>
-    <input type="text" name="description" value="{{ pi.description }}" />
-    <br />
-    <label for="username">username</label>
-    <input type="text" name="username" value="{{ pi.username }}" />
-    <br />
-    <label for="passwd">password</label>
-    <input type="text" name="passwd" value="{{ pi.passwd }}" />
-    <br />
-    <button>Save</button>
-    <a href="/">Cancel</a>
-</form> -->
+<div class="container-fluid">
+    <div class="container">
 
-Edit TV
+        <h4>TV x</h4>
+
+        <p>Link tv {{tv.tvid}} to a Pi</p>
+        <p>
+            <form method="POST" action="tv">
+                <input type="hidden" name="tvid" value="{{tv.tvid}}">
+                <select name="hostname">
+                    {% for pi in tv['pis'] %}
+                    <option>
+                        {{ pi.hostname }}
+                    </option>
+                    {% endfor %}
+                </select>
+                <button>Link</button>
+            </form>
+        </p>
+
+    </div>
+</div>
 
 {% endblock %}

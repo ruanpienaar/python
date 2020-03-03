@@ -21,13 +21,13 @@
                     <td colspan="3" style="text-align: center;">-- Trader --</td>
                 </tr>
                 <tr>
-                    <td>&nbsp;</td><td>&nbsp;</td><td><a href="tv.html?id=12">TV 12 - pi?</a></td>
+                    <td>&nbsp;</td><td>&nbsp;</td><td><a href="{{ url_for('manage.tv', id=12) }}">TV 12 - {{ index['tvs'][12] }}</a></td>
                 </tr>
                 <tr>
-                    <td>&nbsp;</td><td>&nbsp;</td><td><a href="tv.html?id=11">TV 11 - pi?</a></td>
+                    <td>&nbsp;</td><td>&nbsp;</td><td><a href="{{ url_for('manage.tv', id=11) }}">TV 11 - {{ index['tvs'][11] }}</a></td>
                 </tr>
                 <tr>
-                    <td>&nbsp;</td><td>&nbsp;</td><td><a href="tv.html?id=10">TV 10 - pi?</a></td>
+                    <td>&nbsp;</td><td>&nbsp;</td><td><a href="{{ url_for('manage.tv', id=10) }}">TV 10 - {{ index['tvs'][10] }}</a></td>
                 </tr>
 
                 <tr>
@@ -35,19 +35,19 @@
                 </tr>
 
                 <tr>
-                    <td><a href="tv.html?id=01">TV 01 - pi?</a></td><td>&nbsp;</td><td>&nbsp;</td>
+                    <td><a href="{{ url_for('manage.tv', id=01) }}">TV 01 - {{ index['tvs'][01] }}</a></td><td>&nbsp;</td><td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td><a href="tv.html?id=02">TV 02 - pi?</a></td><td>&nbsp;</td><td><a href="tv.html?id=09">TV 09 - pi?</a></td>
+                    <td><a href="{{ url_for('manage.tv', id=02) }}">TV 02 - {{ index['tvs'][02] }}</a></td><td>&nbsp;</td><td><a href="{{ url_for('manage.tv', id=09) }}">TV 09 - {{ index['tvs'][09] }}</a></td>
                 </tr>
                 <tr>
-                    <td><a href="tv.html?id=03">TV 03 - pi?</a></td><td>&nbsp;</td><td><a href="tv.html?id=08">TV 03 - pi?</a></td>
+                    <td><a href="{{ url_for('manage.tv', id=03) }}">TV 03 - {{ index['tvs'][03] }}</a></td><td>&nbsp;</td><td><a href="{{ url_for('manage.tv', id=03) }}">TV 08 - {{ index['tvs'][08] }}</a></td>
                 </tr>
                 <tr>
-                    <td><a href="tv.html?id=04">TV 04 - pi?</a></td><td>&nbsp;</td><td><a href="tv.html?id=07">TV 04 - pi?</a></td>
+                    <td><a href="{{ url_for('manage.tv', id=04) }}">TV 04 - {{ index['tvs'][04] }}</a></td><td>&nbsp;</td><td><a href="{{ url_for('manage.tv', id=04) }}">TV 07 - {{ index['tvs'][07] }}</a></td>
                 </tr>
                 <tr>
-                    <td><a href="tv.html?id=05">TV 05 - pi?</a></td><td>&nbsp;</td><td><a href="tv.html?id=06">TV 06 - pi?</a></td>
+                    <td><a href="{{ url_for('manage.tv', id=05) }}">TV 05 - {{ index['tvs'][05] }}</a></td><td>&nbsp;</td><td><a href="{{ url_for('manage.tv', id=06) }}">TV 06 - {{ index['tvs'][06] }}</a></td>
                 </tr>
 
                 <tr>
