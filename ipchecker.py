@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 import sys
-import urllib
+#import cookielib
+#import urllib2
 import json
 import smtplib
+import requests
 
 default_details = '{"ip": "0.0.0.0", "latlong": "0,0", "country": "X", "city": "X", "user-agent": "UA"}'
 
@@ -24,26 +26,32 @@ def send_email(user, pwd, recipient, subject, body):
         server.login(gmail_user, gmail_pwd)
         server.sendmail(FROM, TO, message)
         server.close()
-        print 'successfully sent the mail'
+        #print('successfully sent the mail')
     except:
-        print "failed to send mail"
+        print("failed to send mail")
+
 
 def compare_stored_ip( stored_ip ):
-    try:
-        jsonString = urllib.urlopen("http://www.trackip.net/ip?json").read()
+#    try:
+        s = requests.Session()
+        res = s.get("https://api.ipify.org/?format=json")
+        #jsonString = res.json()
+        jsonString = res.text
+        #print(jsonString)
         d = json.loads(jsonString)
+        #print(d)
         current_ip = d['ip']
         if stored_ip != current_ip:
-            email_new_ip( jsonString )
+            email_new_ip( current_ip )
             store_details( jsonString )
-    except:
-        print "Could not fetch IP: ", sys.exc_info()[0]
+#    except:
+#        print("Could not fetch IP: ", sys.exc_info()[0])
 
 def email_new_ip( details ):
-    print details
+    #print(details)
     #!!!!!!!!!!!!!!  Change these details  !!!!!!!!!!!!!!
     #!!!!!!!!!!!!!! can use list for recip !!!!!!!!!!!!!!
-    send_email('user', 'pwd', 'recipient', 'Ip Change', details)
+    send_email('ruan804@gmail.com', 'Nifty2;pence', 'ruan800@gmail.com', 'Ip Change', details)
 
 def store_details ( details ):
     f = open('.ip_json_details', 'w+')
@@ -66,5 +74,6 @@ except IOError as e:
 # except ValueError:
 #     print "Could not convert data to an integer."
 except:
-    print "Unexpected error:", sys.exc_info()[0]
+    print("Unexpected error:", sys.exc_info()[0])
     raise
+
